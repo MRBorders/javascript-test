@@ -4,16 +4,33 @@
     <title>test</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
   </head>
 
   <body>
-      <header><img id="a+" src="assets/images/a+ pic.webp" alt="a+ logo for our test">
-    <h1 id="header">test(change later for specificity)</h1>
-  </body>
+      <header><img id="a" src="assets\grade-result-plus-icon-white-background-red-circle-marl-sign-hand-drawn-vector-flat-style-211325628.jpg" alt="a+ logo for test">
+        <h1 id="header">Batman Pop Quiz</h1>
+        <ul>
+          <li class="timer">Time:</li>
+          <li class="score">Score:</li>
+        </ul>
+      </header>
 
-
-
-  <script src="assets/js/script.js"></script>
-  </body>
+      <main class="quizSection">
+        <section id="screen0" data-states="[0]" >
+          <h2>Are you a Batman fan?</h2>
+          <button>start</button>
+        </section>
+          <section id="screen1" class="hide" data-states="[1]">
+            <h2 id="question"></h2>
+            <ul id="possibleAnswers"></ul>
+          </section>
+        <section id="screen2" >
+          <h2 class="highscore" class="hide" data-states="[2]">✨highscores✨</h2>
+          <button>See highscores?</button>
+          <button>Restart?</button>
+        </section>
+      </main>
+      <script src="javascript/script.js"></script>
+    </body>
 </html>

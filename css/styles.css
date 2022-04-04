@@ -1,0 +1,26 @@
+body {
+background-image: url("https://wallpaperaccess.com/full/4317845.jpg") ;
+background-repeat: no-repeat;
+background-size: cover;
+}
+
+#a{
+    border-radius: 80%;
+    height: 250px;
+    margin-left: 150px;
+}
+
+#header{
+    text-align: center;
+    color: red;
+    font-family: cursive
+    ;
+}
+
+main{
+    margin-top: 200px;
+}
+
+.hide{
+    display:none;
+}
