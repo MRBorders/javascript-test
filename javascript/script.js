@@ -9,7 +9,7 @@ var answersEl= document.querySelector("#possibleAnswers");
 const highScoresButton= document.querySelector("#highscores");
 var countdownTimer= document.querySelector(".timer");
 var hide=document.querySelector(".hide");
-
+var score=document.querySelector(".score");
 
 const questions = [
    {
@@ -59,12 +59,14 @@ const questions = [
 } ,
 {
     question:"What was Bat-hound's name?",
-    choices:["a. lucky", "b. ace ", "c. champ ", "d. burt"],
+    answers:["a. lucky", "b. ace ", "c. champ ", "d. burt"],
     answer: 1
 }
 ];
 var currentQuestion= 0;
-
+var timer= 100;
+var myScore=0;
+var myInterval= null
 var dynamicElements = [
   screen0El,
   screen1El,
@@ -73,9 +75,38 @@ var dynamicElements = [
   function init() {
     setEventListeners();
   }
+  function checkAnswer(selection, answer){
+    if (selection===answer){
+      populateQuestion()
+      myScore+=10;
+      score.innerHTML= "Score: " + myScore;
+    }
+    else{
+      populateQuestion()
+      timer-= 10;
+      countdownTimer.innerHTML="Time: " + timer ;
 
+    }
+  }
+  function myTimer(){
+    if (timer<1 ){
+      clearInterval(myInterval);
+    }
+    else {
+      timer--;
+      countdownTimer.innerHTML="Time: " + timer ;
+
+    }
+  }
   function startNew(){
-      currentQuestion=0
+    score.innerHTML= "Score: " + myScore;
+    myInterval= setInterval(myTimer,1000);
+    countdownTimer.innerHTML="Time: " + timer ;
+    console.log("are we here");
+    screen0El.classList.toggle("hide");
+    screen2El.classList.toggle("hide");
+      screen1El.classList.toggle("hide");
+      currentQuestion=0;
       populateQuestion(currentQuestion);
   }
 
@@ -83,8 +114,12 @@ var dynamicElements = [
     var questionObj = questions[currentQuestion];
     answersEl.innerHTML = "";
     questionEl.textContent = questionObj.question;
+    var ans= questionObj.answers[questionObj.answer];
     questionObj.answers.forEach(function (question) {
       var li = document.createElement("li");
+      li.addEventListener("click", function (){
+        checkAnswer(question,ans);
+      });
       li.textContent = question;
       answersEl.appendChild(li);
     });
@@ -122,6 +157,7 @@ var dynamicElements = [
        
     }
   }
+  init();
      
 
 
